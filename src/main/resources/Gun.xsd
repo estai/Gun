@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+           targetNamespace="http://www.estai.com" xmlns="http://www.w3.org/2001/XMLSchema"
+           xmlns:ns="http://www.estai.com">
+
+    <complexType name="mainType">
+        <sequence>
+            <element name="model" type="string"/>
+            <element name="origin" type="string"/>
+            <element name="ID">
+                <simpleType>
+                    <restriction base="integer">
+                        <pattern value="[0-9]{1,}"/>
+                    </restriction>
+                </simpleType>
+            </element>
+        </sequence>
+
+    </complexType>
+
+
+    <complexType name="Gun">
+        <complexContent>
+            <extension base="ns:mainType">
+                <all>
+        <element name="handy">
+            <simpleType>
+                <restriction base="string">
+                    <enumeration value="two"/>
+                    <enumeration value="one"/>
+                </restriction>
+            </simpleType>
+        </element>
+                    <element name="material" type="ns:Material" minOccurs="0"></element>
+                    <element name="ttc" type="ns:TTC" ></element>
+                </all>
+            </extension>
+        </complexContent>
+    </complexType>
+    
+
+    <complexType name="Material">
+        <sequence>
+            <element name="body" type="ns:MaterialBody" minOccurs="0"></element>
+            <element name="barrel" type="ns:MaterialPart" minOccurs="0"></element>
+        </sequence>
+    </complexType>
+
+    <simpleType name="MaterialBody">
+        <restriction base="string">
+            <enumeration value="Steel"/>
+            <enumeration value="Titan"/>
+            <enumeration value="Alloys"/>
+            <enumeration value="Composites"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="MaterialBarrel">
+        <restriction base="string">
+            <enumeration value="Steel"/>
+            <enumeration value="Tree"/>
+        </restriction>
+    </simpleType>
+
+    <complexType name="TTC">
+
+        <all>
+            <element name="range" type="ns:Range"></element>
+            <element name="sight">
+                <simpleType>
+                    <restriction base="integer">
+                        <minInclusive value="25"/>
+                    </restriction>
+                </simpleType>
+            </element>
+       <element name="clip" type="positiveInteger" default="0"></element>
+
+        <element name="optics" >
+            <simpleType>
+                <restriction base="string">
+                    <enumeration value="yes"/>
+                    <enumeration value="no"/>
+                </restriction>
+            </simpleType>
+        </element>
+        </all>
+    </complexType>
+
+    <complexType name="Range">
+
+             <sequence>
+                    <element name="type">
+                        <simpleType>
+                            <restriction base="string">
+                                <enumeration value="near"/>
+                                <enumeration value="meduim"/>
+                                <enumeration value="long"/>
+                            </restriction>
+                        </simpleType>
+                    </element>
+                    <element name="value" type="positiveInteger"></element>
+                </sequence>
+            
+
+
+    </complexType>
+
+<element name="magazine">
+             <complexType>
+                    <sequence>
+            <element name="gun" type="ns:Gun" maxOccurs="unbounded"></element>
+          </sequence>
+          </complexType>
+</element>
+</schema>

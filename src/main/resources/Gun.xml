@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns0:magazine xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+         xmlns:ns0='http://www.estai.com'
+         xsi:schemaLocation='http://www.estai.com Gun.xsd'>
+    <ns0:gun>
+        <ns0:ID>1</ns0:ID>
+        <ns0:handy>one</ns0:handy>
+        <ns0:model>Shotgun</ns0:model>
+        <ns0:origin>Boranov Co</ns0:origin>
+        <ns0:material>
+            <ns0:body>Steel</ns0:body>
+            <ns0:barrel>Steel</ns0:barrel>
+        </ns0:material>
+        <ns0:ttc>
+            <ns0:optics>yes</ns0:optics>
+            <ns0:range>
+                <ns0:value>25</ns0:value>
+                <ns0:type>near</ns0:type>
+            </ns0:range>
+            <ns0:sight>500</ns0:sight>
+            <ns0:clip>50</ns0:clip>
+        </ns0:ttc>
+    </ns0:gun>
+</ns0:magazine>
